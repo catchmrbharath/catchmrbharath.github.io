@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://catchmrbharath.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Bharath M R' blog
+subtitle: Test
+author: Bharath M R
 simple_search: http://google.com/search
 description:
 
@@ -69,7 +69,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: catchmrbharath
 twitter_tweet_button: true
 
 # Google +1
