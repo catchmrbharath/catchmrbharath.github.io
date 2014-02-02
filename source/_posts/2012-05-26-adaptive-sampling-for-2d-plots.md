@@ -3,6 +3,7 @@ layout: post
 title: "Adaptive sampling for 2D plots"
 description: ""
 category: programming
+comment: true
 tags: [gsoc]
 ---
 This was my first week of GSoC and I spent time on experimenting with adaptive sampling. The major idea explored were what constitutes a condition for which we need not sample more to obtain an accurate plot. I started with the idea of the area of the triangle formed by the three consecutive points to be 

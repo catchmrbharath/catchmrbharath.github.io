@@ -3,6 +3,7 @@ layout: post
 title: "GSoC last week"
 description: ""
 category: programming
+comments: true
 tags: [gsoc]
 ---
 

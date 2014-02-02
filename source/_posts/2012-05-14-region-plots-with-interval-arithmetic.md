@@ -3,6 +3,7 @@ layout: post
 title: "Region Plots with Interval Arithmetic"
 description: ""
 category: programming
+comments: true
 tags: [gsoc, sympy]
 ---
 My GSoC project is to provide support for implicit plotting using interval arithmetic. As mpmath already has a very good interval arithmetic library, I wanted to try out how efficient the algorithm is going to be using the mpmath interval arithmetic library. I wanted to get an idea on the time required for plotting and also wanted to decide whether to write my own interval arithmetic library or use the existing mpmath library and add additional things to it. 
