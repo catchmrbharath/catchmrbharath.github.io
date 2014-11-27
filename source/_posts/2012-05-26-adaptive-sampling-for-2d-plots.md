@@ -2,7 +2,7 @@
 layout: post
 title: "Adaptive sampling for 2D plots"
 description: ""
-category: programming
+category: gsoc
 comment: true
 tags: [gsoc]
 ---

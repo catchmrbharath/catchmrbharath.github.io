@@ -2,7 +2,7 @@
 layout: post
 title: "GSoC last week"
 description: ""
-category: programming
+category: gsoc
 comments: true
 tags: [gsoc]
 ---

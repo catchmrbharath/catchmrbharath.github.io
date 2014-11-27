@@ -2,7 +2,7 @@
 layout: post
 title: "Region Plots with Interval Arithmetic"
 description: ""
-category: programming
+category: gsoc
 comments: true
 tags: [gsoc, sympy]
 ---
