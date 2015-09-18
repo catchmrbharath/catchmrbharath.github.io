@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://catchmrbharath.github.io/sitemap.xml 
+Sitemap: http://mrbharath.me/sitemap.xml 

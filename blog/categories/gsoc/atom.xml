@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Gsoc | Bharath Mankalale]]></title>
-  <link href="http://catchmrbharath.github.io/blog/categories/gsoc/atom.xml" rel="self"/>
-  <link href="http://catchmrbharath.github.io/"/>
-  <updated>2015-09-18T10:11:41-07:00</updated>
-  <id>http://catchmrbharath.github.io/</id>
+  <link href="http://mrbharath.me/blog/categories/gsoc/atom.xml" rel="self"/>
+  <link href="http://mrbharath.me/"/>
+  <updated>2015-09-18T10:15:18-07:00</updated>
+  <id>http://mrbharath.me/</id>
   <author>
     <name><![CDATA[Bharath Mankalale]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[GSoC Last Week]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/08/19/gsoc-last-week/"/>
+    <link href="http://mrbharath.me/blog/2012/08/19/gsoc-last-week/"/>
     <updated>2012-08-19T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/08/19/gsoc-last-week</id>
+    <id>http://mrbharath.me/blog/2012/08/19/gsoc-last-week</id>
     <content type="html"><![CDATA[<p>This happens to be the last week of GSoC. The major things that I accomplished this
 week are</p>
 
@@ -50,9 +50,9 @@ have any good names for 3D plots, please leave it in the comments.</p>
   
   <entry>
     <title type="html"><![CDATA[GSOC Week 11]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/08/05/gsoc-week-11/"/>
+    <link href="http://mrbharath.me/blog/2012/08/05/gsoc-week-11/"/>
     <updated>2012-08-05T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/08/05/gsoc-week-11</id>
+    <id>http://mrbharath.me/blog/2012/08/05/gsoc-week-11</id>
     <content type="html"><![CDATA[<p>I got my adaptive sampling branch merged last week. Now the plots are sampled
 adaptively and is more accurate. I also added a lot of tests to the implicit plotting
 branch and the coverage now is greater than 90%.</p>
@@ -84,9 +84,9 @@ support on GAE, then it would be awesome.</p>
   
   <entry>
     <title type="html"><![CDATA[Gsoc Week 9]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/07/23/gsoc-week-9/"/>
+    <link href="http://mrbharath.me/blog/2012/07/23/gsoc-week-9/"/>
     <updated>2012-07-23T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/07/23/gsoc-week-9</id>
+    <id>http://mrbharath.me/blog/2012/07/23/gsoc-week-9</id>
     <content type="html"><![CDATA[<p>This has been a really unproductive week. I was sick with fever for almost three
 days and could not spend my time on anything. I spent the next days getting the
 basic svgfig backend for 2d line plots. There are lots of issues with svgfig, and
@@ -119,9 +119,9 @@ in the next few weeks.</p>
   
   <entry>
     <title type="html"><![CDATA[GSoC Week 7]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7/"/>
+    <link href="http://mrbharath.me/blog/2012/07/09/gsoc-week-7/"/>
     <updated>2012-07-09T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7</id>
+    <id>http://mrbharath.me/blog/2012/07/09/gsoc-week-7</id>
     <content type="html"><![CDATA[<p>This week has been quite eventful. The implicit plotting module is almost done. I added the functionality of combining expressions using the <code>And</code> and <code>Or</code> statements. Now you can do</p>
 
 <pre><code>plot_implicit(And(Eq(y, exp(x)), y - x &gt; 2)
@@ -148,9 +148,9 @@ in the next few weeks.</p>
   
   <entry>
     <title type="html"><![CDATA[GSoC Week 6]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/07/02/gsoc-week-6/"/>
+    <link href="http://mrbharath.me/blog/2012/07/02/gsoc-week-6/"/>
     <updated>2012-07-02T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/07/02/gsoc-week-6</id>
+    <id>http://mrbharath.me/blog/2012/07/02/gsoc-week-6</id>
     <content type="html"><![CDATA[<p>I have been trying to improve the implicit plotting module during this week. But I have hit a road block. I almost ran out of ideas to solve the problem.</p>
 
 <p>Description:</p>

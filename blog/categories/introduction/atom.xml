@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Introduction | Bharath Mankalale]]></title>
-  <link href="http://catchmrbharath.github.io/blog/categories/introduction/atom.xml" rel="self"/>
-  <link href="http://catchmrbharath.github.io/"/>
-  <updated>2015-09-18T10:11:41-07:00</updated>
-  <id>http://catchmrbharath.github.io/</id>
+  <link href="http://mrbharath.me/blog/categories/introduction/atom.xml" rel="self"/>
+  <link href="http://mrbharath.me/"/>
+  <updated>2015-09-18T10:15:18-07:00</updated>
+  <id>http://mrbharath.me/</id>
   <author>
     <name><![CDATA[Bharath Mankalale]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello World]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2012/05/05/hello-world/"/>
+    <link href="http://mrbharath.me/blog/2012/05/05/hello-world/"/>
     <updated>2012-05-05T00:00:00-07:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2012/05/05/hello-world</id>
+    <id>http://mrbharath.me/blog/2012/05/05/hello-world</id>
     <content type="html"><![CDATA[<h1>Hello World</h1>
 
 <ul>

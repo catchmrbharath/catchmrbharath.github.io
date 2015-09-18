@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sicp | Bharath Mankalale]]></title>
-  <link href="http://catchmrbharath.github.io/blog/categories/sicp/atom.xml" rel="self"/>
-  <link href="http://catchmrbharath.github.io/"/>
-  <updated>2015-09-18T10:11:41-07:00</updated>
-  <id>http://catchmrbharath.github.io/</id>
+  <link href="http://mrbharath.me/blog/categories/sicp/atom.xml" rel="self"/>
+  <link href="http://mrbharath.me/"/>
+  <updated>2015-09-18T10:15:18-07:00</updated>
+  <id>http://mrbharath.me/</id>
   <author>
     <name><![CDATA[Bharath Mankalale]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SICP: Section 2.2.2]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-2/"/>
+    <link href="http://mrbharath.me/blog/2014/12/28/sicp-section-2-dot-2-2/"/>
     <updated>2014-12-28T04:22:13-08:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-2</id>
+    <id>http://mrbharath.me/blog/2014/12/28/sicp-section-2-dot-2-2</id>
     <content type="html"><![CDATA[<p>The sections introduces us to trees using pairs as the underlying structure.</p>
 
 <h3>Section example</h3>
@@ -114,9 +114,9 @@ regular lambda expression.</p>
   
   <entry>
     <title type="html"><![CDATA[SICP: Section 2.2.1]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-1/"/>
+    <link href="http://mrbharath.me/blog/2014/12/28/sicp-section-2-dot-2-1/"/>
     <updated>2014-12-28T03:16:08-08:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-1</id>
+    <id>http://mrbharath.me/blog/2014/12/28/sicp-section-2-dot-2-1</id>
     <content type="html"><![CDATA[<p>Exercise 2.20 deals with functions that take arbitrary number of arguments. This is extremely
 useful in the context of scheme because it allows you to use less brackets :).</p>
 
@@ -207,9 +207,9 @@ a single list.</p>
   
   <entry>
     <title type="html"><![CDATA[Starting SICP]]></title>
-    <link href="http://catchmrbharath.github.io/blog/2014/12/25/starting-sicp/"/>
+    <link href="http://mrbharath.me/blog/2014/12/25/starting-sicp/"/>
     <updated>2014-12-25T23:09:08-08:00</updated>
-    <id>http://catchmrbharath.github.io/blog/2014/12/25/starting-sicp</id>
+    <id>http://mrbharath.me/blog/2014/12/25/starting-sicp</id>
     <content type="html"><![CDATA[<p>I recently got gifted the book Structure and Interpretation of Programs(SICP) on my birthday.
 I have had a long desire to go through the complete book and complete all the exercises. Inspired
 by <a href="http://eli.thegreenplace.net/">Eli Bendersky&rsquo;s</a>, I am going to spend the next 6 months or maybe
