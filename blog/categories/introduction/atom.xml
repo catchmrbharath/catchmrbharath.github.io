@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Introduction | Bharath Mankalale]]></title>
+  <link href="http://catchmrbharath.github.io/blog/categories/introduction/atom.xml" rel="self"/>
+  <link href="http://catchmrbharath.github.io/"/>
+  <updated>2015-09-18T10:11:41-07:00</updated>
+  <id>http://catchmrbharath.github.io/</id>
+  <author>
+    <name><![CDATA[Bharath Mankalale]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://catchmrbharath.github.io/blog/2012/05/05/hello-world/"/>
+    <updated>2012-05-05T00:00:00-07:00</updated>
+    <id>http://catchmrbharath.github.io/blog/2012/05/05/hello-world</id>
+    <content type="html"><![CDATA[<h1>Hello World</h1>
+
+<ul>
+<li><p>Its been a long time procrastinating to write a blog. Having read this <a href="www.writerbabu.com/post.php?post_id=554">post</a>, I realized that I really need to think about the progress I am doing each day. I will be creating a new post every two days, in the worst case, with something that I have learnt or something that I know. Writing about something you know, really questions your assumptions, and you realize that you really didn&rsquo;t know something that well. Its also been a long time that I wrote essays, and I am feeling rusty. It is reflected in the way that I am writing this post. It is high time that I improve my writing skills also. Hopefully I will imprve over time</p></li>
+</ul>
+
+
+<p>I put a lot of effort to get this blog running. I feel really powerful as I can configure this blog as I want it to be and more than anything, it has <strong>MathJax</strong> support. I think this will help me to express my views better.</p>
+]]></content>
+  </entry>
+  
+</feed>

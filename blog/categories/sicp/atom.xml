@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sicp | Bharath Mankalale]]></title>
+  <link href="http://catchmrbharath.github.io/blog/categories/sicp/atom.xml" rel="self"/>
+  <link href="http://catchmrbharath.github.io/"/>
+  <updated>2015-09-18T10:11:41-07:00</updated>
+  <id>http://catchmrbharath.github.io/</id>
+  <author>
+    <name><![CDATA[Bharath Mankalale]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SICP: Section 2.2.2]]></title>
+    <link href="http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-2/"/>
+    <updated>2014-12-28T04:22:13-08:00</updated>
+    <id>http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-2</id>
+    <content type="html"><![CDATA[<p>The sections introduces us to trees using pairs as the underlying structure.</p>
+
+<h3>Section example</h3>
+
+<pre><code class="scheme">(define (count-leaves x)
+  (cond ((null? x) 0)
+        ((not (pair? x)) 1)
+        (else (+ (count-leaves (car x))
+                 (count-leaves (cdr x))))))
+
+(define x (cons (list 1 2) (list 3 4)))
+
+(count-leaves x)
+(count-leaves (list x x))
+</code></pre>
+
+<p>Each exercise of SICP makes me think more about recursion. The following exercise made me
+think more about how to model recursion and what the returns are to be when recursing multiple
+layers inside a tree.</p>
+
+<h3>Exercise 2.27</h3>
+
+<pre><code class="scheme">(define (deep-reverse items)
+  (define (deep-reverse-iter items ans)
+    (cond ((null? items) ans)
+          ((not (pair? items)) items)
+          (else (deep-reverse-iter (cdr items)
+                                   (cons (deep-reverse-iter (car items) nil)
+                                         ans)))))
+  (deep-reverse-iter items nil))
+</code></pre>
+
+<h3>Exercise 2.28</h3>
+
+<pre><code class="scheme">;;Exercise 2.28
+(define (fringe items)
+  (define (fringe-iter list1 ans)
+    (cond ((null? list1) ans)
+          ((pair? list1) (append (fringe-iter (car list1) nil) (fringe-iter (cdr list1) nil)))
+          (else (list list1))))
+  (fringe-iter items nil)
+  )
+</code></pre>
+
+<h3>Exercise 2.30</h3>
+
+<pre><code class="scheme">;;Exercise 2.30
+(define (square-tree tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (square tree))
+        (else (cons (square-tree (car tree))
+                    (square-tree (cdr tree))))))
+
+(define (square-tree tree)
+  (map (lambda (sub-tree)
+         (if (pair? sub-tree)
+           (square-tree sub-tree)
+           (square sub-tree))) 
+       tree))
+
+(square-tree
+  (list 1
+        (list 2 (list 3 4) 5)
+        (list 6 7)))
+</code></pre>
+
+<h3>Exercise 2.31</h3>
+
+<pre><code class="scheme">(define (tree-map proc tree)
+  (map (lambda (sub-tree)
+         (if (pair? sub-tree)
+           (tree-map proc sub-tree)
+           (proc sub-tree)))
+       tree))
+
+(define (square-tree tree) (tree-map square tree))
+</code></pre>
+
+<p>Exercise 2.32 could have been written better if currying was available. I am not sure whether scheme supports currying functions, and hence the
+regular lambda expression.</p>
+
+<h3>Exercise 2.32</h3>
+
+<pre><code class="scheme">;;Exercise 2.32
+(define (subsets s)
+  (if (null? s)
+    (list nil)
+    (let ((rest (subsets (cdr s))))
+      (append rest (map (lambda (x) (cons (car s) x)) rest)))))
+(subsets (list 1 2 3))
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SICP: Section 2.2.1]]></title>
+    <link href="http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-1/"/>
+    <updated>2014-12-28T03:16:08-08:00</updated>
+    <id>http://catchmrbharath.github.io/blog/2014/12/28/sicp-section-2-dot-2-1</id>
+    <content type="html"><![CDATA[<p>Exercise 2.20 deals with functions that take arbitrary number of arguments. This is extremely
+useful in the context of scheme because it allows you to use less brackets :).</p>
+
+<h3>Exercise 2.20</h3>
+
+<pre><code class="scheme">(define (same-parity elem . xlist)
+  (define (same-parity-iter res-list num-list)
+    (if (null? num-list)
+      res-list
+      (if (= (remainder (+ elem (car num-list)) 2) 0)
+        (same-parity-iter (cons (car num-list) res-list) (cdr num-list))
+        (same-parity-iter res-list (cdr num-list)))))
+  (reverse (same-parity-iter (list elem) xlist)))
+</code></pre>
+
+<p>I used <code>reverse</code> followed by the <code>same-parity-iter</code> because I did not want to use the inefficient
+<code>append</code> function.</p>
+
+<pre><code>(same-parity 1 2 3 4 5 6 7)
+mcons 4 (mcons 3 (mcons 5 (mcons 7 '()'))))
+</code></pre>
+
+<p>The sections also introduces us to the <code>map</code> higher order function.</p>
+
+<pre><code>(define (map proc items)
+  (if (null? items)
+    nil
+    (cons (proc (car items))
+          (map proc (cdr items)))))
+</code></pre>
+
+<p>But why map? Quoting SICP</p>
+
+<p><blockquote><p>The different between the two definitions is not that the computer is performing a different process (it isn&rsquo;t) but that we think about the process differently. In effect, <code>map</code> helps establish an abstraction barrier that isolates the implementation of procedures that transforms lists from the details of how the elements of the list are extracted and combined.</p></p><p><p></p></blockquote></p>
+
+<p>This is the most succint way to put across the need for abstractions. Abstractions are invented to help us think differently
+and care about different things.</p>
+
+<h3>Exercise 2.21</h3>
+
+<pre><code class="scheme">;;Exercise 2.21
+;; without using map
+(define (square x) (* x x))
+(define (square-list items)
+  (if (null? items)
+    nil
+    (cons (square (car items))
+          (square-list (cdr items)))))
+
+;;with using map
+(define (square-list items)
+  (map (lambda (x) (* x x))
+       items))
+</code></pre>
+
+<h3>Exercise 2.22</h3>
+
+<pre><code class="scheme">;;Exercise 2.22
+;; Iterative square list
+
+(define (square-list items)
+  (define (iter things answer)
+    (if (null? things)
+      answer
+      (iter (cdr things)
+            (cons (square (car things))
+                  answer))))
+  (iter items nil))
+</code></pre>
+
+<p>Interchanging the arguments of cons does not work as it will generate a list of lists instead of generating
+a single list.</p>
+
+<h3>Exercise 2.23</h3>
+
+<pre><code class="scheme">;; Exercise 2.23
+
+(define (for-each proc items)
+  (cond ((null? items) #t)
+        (else (proc (car items))
+              (for-each proc (cdr items)))))
+
+(for-each (lambda (x) (newline) (display x))
+          (list 57 321 68))
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Starting SICP]]></title>
+    <link href="http://catchmrbharath.github.io/blog/2014/12/25/starting-sicp/"/>
+    <updated>2014-12-25T23:09:08-08:00</updated>
+    <id>http://catchmrbharath.github.io/blog/2014/12/25/starting-sicp</id>
+    <content type="html"><![CDATA[<p>I recently got gifted the book Structure and Interpretation of Programs(SICP) on my birthday.
+I have had a long desire to go through the complete book and complete all the exercises. Inspired
+by <a href="http://eli.thegreenplace.net/">Eli Bendersky&rsquo;s</a>, I am going to spend the next 6 months or maybe
+a year going through the book. I have already finished the first chapter of the book. Hence I will
+be blogging only from chapter 2. I am going to follow the plan laid out by Eli Bendersky, the plan being</p>
+
+<ul>
+<li>Read the book</li>
+<li>See all the video lectures by Sussman and Abelson</li>
+<li>Do <strong>all</strong> the exercises in the book.</li>
+<li>Write about the exercises and the things that I have learnt from it.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
