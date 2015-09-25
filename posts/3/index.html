@@ -5,10 +5,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Adaptive Sampling for 2D Plots - Bharath Mankalale</title>
+  <title>Bharath Mankalale</title>
   <meta name="author" content="Bharath Mankalale">
   
-  <meta name="description" content="">
+  <meta name="description" content="Bharath Mankalale (catchmrbharath), Bharath M R">
   <meta name="keywords" content="Bharath, Mankalale, Python, programming, SymPy, Ruby, Ruby on Rails, Scientifc Computing, Scipy, NumPy, Matplotlib">
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.catchmrbharath.github.io/blog/2012/05/26/adaptive-sampling-for-2d-plots">
+  <link rel="canonical" href="http://www.catchmrbharath.github.io/posts/3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Bharath Mankalale" type="application/atom+xml">
@@ -75,12 +75,44 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Adaptive Sampling for 2D Plots</h1>
+      <h1 class="entry-title"><a href="/blog/2012/06/03/gsoc-week-2/">GSoC Week 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-06-03T00:00:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I worked on interval aithmetic using numpy this week. I have almost got the module ready. I have to integrate it with Stefan&rsquo;s branch and a basic version of implicit plotting will be ready to go. I will update this blog post with plots and performance results once I integrate it with Stefan&rsquo;s branch.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/26/adaptive-sampling-for-2d-plots/">Adaptive Sampling for 2D Plots</a></h1>
     
     
       <p class="meta">
@@ -96,7 +128,7 @@
   </header>
 
 
-<div class="entry-content"><p>This was my first week of GSoC and I spent time on experimenting with adaptive sampling. The major idea explored were what constitutes a condition for which we need not sample more to obtain an accurate plot. I started with the idea of the area of the triangle formed by the three consecutive points to be
+  <div class="entry-content"><p>This was my first week of GSoC and I spent time on experimenting with adaptive sampling. The major idea explored were what constitutes a condition for which we need not sample more to obtain an accurate plot. I started with the idea of the area of the triangle formed by the three consecutive points to be
 less than a tolerance value. This worked nicely but did oversampling unnecessarily. The problem with it was the area of the triangle was dependent on the distance between the points which made the condition dependent on the lengths and hence oversampled even though the line formed by the three points was almost collinear.
 So the obvious next idea was to check the angle formed by the three points and see whether it forms an angle near to 180 degree. There were three versions of the above algorithm implemented, out of which one was the iterative version of a recursive solution. The iterative version is <a href="https://github.com/Krastanov/sympy/pull/5">here</a>. Considering Stefan Krastanov&rsquo;s suggestion, I implemented a recursive solution which samples 5 additional points between two points instead of a single point. The idea was to use numpy&rsquo;s quick evaluations of an array and also arrive at the straight line condition faster. Also, this reuses most of the code written before. The code for the following can be found <a href="https://github.com/catchmrbharath/sympy/tree/adaptnew">here</a>. The snippet of the code is as follows:</p>
 
@@ -187,54 +219,135 @@ So the obvious next idea was to check the angle formed by the three points and s
 
 <p>I think I will get an non - ugly code ready by the tomorrow and wait for Stefan&rsquo;s branch to get merged before submitting this method as pull request. This week has been lots of experimentation. I think I will spend the next week getting a basic version of Interval Arithmetic ready using numpy.</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
-<span class="byline author vcard">Posted by <span class="fn">Bharath Mankalale</span></span>
 
-      
-
-
-
-
-<time class='entry-date' datetime='2012-05-26T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-      
-
-<span class="categories">
+    </article>
   
-    <a class='category' href='/blog/categories/gsoc/'>gsoc</a>
   
-</span>
-
-
-    </p>
+    <article>
+      
+  <header>
     
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.catchmrbharath.github.io/blog/2012/05/26/adaptive-sampling-for-2d-plots/" data-via="catchmrbharath" data-counturl="http://www.catchmrbharath.github.io/blog/2012/05/26/adaptive-sampling-for-2d-plots/" >Tweet</a>
-  
-  
-  
-</div>
-
+      <h1 class="entry-title"><a href="/blog/2012/05/14/region-plots-with-interval-arithmetic/">Region Plots With Interval Arithmetic</a></h1>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/05/14/region-plots-with-interval-arithmetic/" title="Previous Post: Region Plots with Interval Arithmetic">&laquo; Region Plots with Interval Arithmetic</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/06/03/gsoc-week-2/" title="Next Post: GSoC Week 2">GSoC Week 2 &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
+    
+      <p class="meta">
+        
 
+
+
+
+<time class='entry-date' datetime='2012-05-14T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My GSoC project is to provide support for implicit plotting using interval arithmetic. As mpmath already has a very good interval arithmetic library, I wanted to try out how efficient the algorithm is going to be using the mpmath interval arithmetic library. I wanted to get an idea on the time required for plotting and also wanted to decide whether to write my own interval arithmetic library or use the existing mpmath library and add additional things to it.
+I have a basic implementation which supports only the mpmath interval arithmetic functions. The results look promising and I am guessing a separate implementation for plotting will be faster and I will be able to add features more easily.I have an image of <span> $y > 1/x$ </span> with the interval edges below. The image below was plotted so with a resolution of 1024x1024. It is possible to see how the intervals are subdivided more and more when it reaches the edge of a region.</p>
+
+<p><img class="center" src="/images/14052012/figwithedge.png" width="600" height="400"></p>
+
+<p>It took 1.57 seconds to render this image which is decently fast. I observed that if the independent regions are less and large, then the time take for the plot to be rendered is high. I tried <span> $cos(y) > sin(x)$ </span> which took about 5.3 seconds to render.</p>
+
+<p><img class="center" src="/images/14052012/cosysinx.png" width="600" height="400"></p>
+
+<p>I wanted to try what the maximum time it takes to render something. So I tried plotting <span> $sin^{2}x+cos^{2}x$ </span>less than 1. As the arithmetic is done on intervals, it is not possible for the algorithm to decide that the expression is not true throughout the interval. So it goes on subdividing more and more, until it reaches a dimension of 1 pixel. For a resolution of 512X512, it took 120 seconds to render. If there are a lot of evaluations in the expression, then it might increase, but we should be expecting times around 120 seconds.</p>
+
+<p>Another problem that I have to address is rasterization. I am really not getting any ideas on how to avoid rasterization. One way is to handle the zoom event in matplotlib and change the data to match the zoom. But for complicated graphs, revaluating might take a lot of time, which is bad.</p>
+
+<p><img class="center" src="/images/14052012/figraster.png" width="600" height="400"></p>
+
+<p>We can see that if there is a way of interpolating over the rectangular edges, then we will have a plot without rasterization. I haven&rsquo;t got any foolproof idea to implement this interpolation as there will be many independent regions. So if you have any idea, then please comment or mail me :). The code for plotting can be found <a href="https://gist.github.com/2695079">here</a>.</p>
 </div>
+  
+  
 
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/08/gsoc-2012-sympy/">GSoC 2012 Sympy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-05-08T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was selected by <a href="http://sympy.org">SymPy</a> to work on their plotting module as part of GSoC2012. So I will be spending the next three months working on a plotting module to plot implicit functions. Implicit functions are difficult to plot by simple meshing. Though we might get a good result with simple meshing for most of the functions, it can be quite erroneous for some of the functions. So I will be using interval arithmetic to provide a way to plot implicit functions. My GSoC application can be found <a href="https://github.com/sympy/sympy/wiki/GSoC-2012-Application-Bharath-M-R%3A-Plotting-Module">here</a>. I will be atlast making a lasting contribution to an open - source software.</p>
+
+<p>There are a lot of posts on how contributing to a open source software is the best way to sharpen your programming skills. But lot of people are too afraid to approach an organization and start contributing. There is an impending fear that people working on these projects are very stud(intelligent) people and they might get annoyed at your ignorance. Well, let me tell you this, people in an open source project are really nice. They don&rsquo;t get annoyed very easily and they are ready to help you with everything. They correct all your mistakes with lots of patience and help you with improving your code. I think getting your code reviewed is the best way to improve your programming skills after you have reached a certain stage.</p>
+
+<p>I was pretty much amazed with SymPy&rsquo;s code base. Its so neat and clean that any newcomer can just look at the docstrings and can deduce the functionality of every function. Though my experience is limited, I haven&rsquo;t seen a better codebase than SymPy&rsquo;s. I am still looking at their codebase and the amount of modularity continues to amaze me. So if anybody is interested in contributing to a python open source project, then consider contributing to <a href="http://sympy.org">SymPy</a>, for you will learn a lot on how a python project has to be structured.</p>
+
+<p>I will be using this blog to update about my GSoC project and hopefully I will learn a lot during this period.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/05/hello-world/">Hello World</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-05-05T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Hello World</h1>
+
+<ul>
+<li><p>Its been a long time procrastinating to write a blog. Having read this <a href="www.writerbabu.com/post.php?post_id=554">post</a>, I realized that I really need to think about the progress I am doing each day. I will be creating a new post every two days, in the worst case, with something that I have learnt or something that I know. Writing about something you know, really questions your assumptions, and you realize that you really didn&rsquo;t know something that well. Its also been a long time that I wrote essays, and I am feeling rusty. It is reflected in the way that I am writing this post. It is high time that I improve my writing skills also. Hopefully I will imprve over time</p></li>
+</ul>
+
+
+<p>I put a lot of effort to get this blog running. I feel really powerful as I can configure this blog as I want it to be and more than anything, it has <strong>MathJax</strong> support. I think this will help me to express my views better.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/2">Newer &rarr;</a>
+    
+  </div>
+</div>
 <aside class="sidebar">
   
     <section>
@@ -312,7 +425,6 @@ So the obvious next idea was to check the angle formed by the three points and s
 
   
 </aside>
-
 
     </div>
   </div>

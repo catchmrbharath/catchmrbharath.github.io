@@ -7,11 +7,9 @@
   <meta charset="utf-8">
   <title>Bharath Mankalale</title>
   <meta name="author" content="Bharath Mankalale">
-
   
-  <meta name="description" content="I worked on interval aithmetic using numpy this week. I have almost got the module ready. I have to integrate it with Stefan&rsquo;s branch and a &hellip;">
-  
-
+  <meta name="description" content="Bharath Mankalale (catchmrbharath), Bharath M R">
+  <meta name="keywords" content="Bharath, Mankalale, Python, programming, SymPy, Ruby, Ruby on Rails, Scientifc Computing, Scipy, NumPy, Matplotlib">
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -85,7 +83,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/03/gsoc-week-2/">GSoC Week 2</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/07/23/gsoc-week-9/">Gsoc Week 9</a></h1>
     
     
       <p class="meta">
@@ -94,247 +92,235 @@
 
 
 
-<time class='entry-date' datetime='2012-06-03T00:00:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2012-07-23T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I worked on interval aithmetic using numpy this week. I have almost got the module ready. I have to integrate it with Stefan&rsquo;s branch and a basic version of implicit plotting will be ready to go. I will update this blog post with plots and performance results once I integrate it with Stefan&rsquo;s branch.</p>
-</div>
-  
-  
+  <div class="entry-content"><p>This has been a really unproductive week. I was sick with fever for almost three
+days and could not spend my time on anything. I spent the next days getting the
+basic svgfig backend for 2d line plots. There are lots of issues with svgfig, and
+hence I am of the opinion svgfig should be used only for displaying images on the
+google app engine ie sympy live. First on the list is no support for 3-D graphs. I think this is
+ok, because there are not many libraries even in javascript which can do 3D plotting.
+Also, I am having problems with implementing contour plots and surface plots in
+svgfig. I am experimenting with a way, which would involve using marching squares
+algorithm to plot contour plots.</p>
 
+<p>I think I am a little behind my gsoc schedule, and I should speed up things a little
+in the next few weeks.</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/26/adaptive-sampling-for-2d-plots/">Adaptive Sampling for 2D Plots</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-26T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This was my first week of GSoC and I spent time on experimenting with adaptive sampling. The major idea explored were what constitutes a condition for which we need not sample more to obtain an accurate plot. I started with the idea of the area of the triangle formed by the three consecutive points to be
-less than a tolerance value. This worked nicely but did oversampling unnecessarily. The problem with it was the area of the triangle was dependent on the distance between the points which made the condition dependent on the lengths and hence oversampled even though the line formed by the three points was almost collinear.
-So the obvious next idea was to check the angle formed by the three points and see whether it forms an angle near to 180 degree. There were three versions of the above algorithm implemented, out of which one was the iterative version of a recursive solution. The iterative version is <a href="https://github.com/Krastanov/sympy/pull/5">here</a>. Considering Stefan Krastanov&rsquo;s suggestion, I implemented a recursive solution which samples 5 additional points between two points instead of a single point. The idea was to use numpy&rsquo;s quick evaluations of an array and also arrive at the straight line condition faster. Also, this reuses most of the code written before. The code for the following can be found <a href="https://github.com/catchmrbharath/sympy/tree/adaptnew">here</a>. The snippet of the code is as follows:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_adapt_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">f</span> <span class="o">=</span> <span class="n">vectorized_lambdify</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">list_segments</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">list_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">new_sampling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">segment</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">new_segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_segments</span><span class="p">((</span><span class="n">new_sampling</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">new_sampling</span><span class="p">)))</span>
-</span><span class='line'>            <span class="k">for</span> <span class="n">segmentA</span><span class="p">,</span> <span class="n">segmentB</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">new_segments</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_segments</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-</span><span class='line'>                <span class="k">if</span> <span class="ow">not</span> <span class="n">flat</span><span class="p">(</span><span class="n">segmentA</span><span class="p">,</span> <span class="n">segmentB</span><span class="p">):</span>
-</span><span class='line'>                    <span class="n">sample</span><span class="p">(</span><span class="n">segmentA</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>                <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>                    <span class="n">list_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segmentA</span><span class="p">)</span>
-</span><span class='line'>            <span class="c">#sample the last segment</span>
-</span><span class='line'>            <span class="k">if</span> <span class="ow">not</span> <span class="n">flat</span><span class="p">(</span><span class="n">new_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">new_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-</span><span class='line'>                <span class="n">sample</span><span class="p">(</span><span class="n">new_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>            <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>                <span class="n">list_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">yvalues</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_segments</span><span class="p">((</span><span class="n">points</span><span class="p">,</span> <span class="n">yvalues</span><span class="p">))</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">sample</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">list_segments</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">flat</span><span class="p">(</span><span class="n">segmentA</span><span class="p">,</span> <span class="n">segmentB</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">vectorA</span> <span class="o">=</span> <span class="n">segmentA</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">segmentA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="n">vectorB</span> <span class="o">=</span> <span class="n">segmentB</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">segmentB</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'>    <span class="n">costheta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vectorA</span><span class="p">,</span> <span class="n">vectorB</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vectorA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vectorB</span><span class="p">))</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">costheta</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0005</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">True</span>
-</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">False</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The major problem with the above approach is the way that the rightmost point / segment is handled. The rightmost segment does not have another right segment to decide whether it forms a 180 degree angle or not. Hence it is assumed straight if the previous segment and the present segment forms a straight line. Most of the time this fails to sample further for the end segment thought it should have sampled. The problem can be seen in an plot of <span> $y = sin(x^{2})$ </span></p>
-
-<p><img class="center" src="/images/26052012/plot.png" width="600" height="400"></p>
-
-<p>The last method used is symmetric and gives better results, but it is quite ugly. The branch is <a href="https://github.com/catchmrbharath/sympy/tree/complexplot">here</a>.(EDIT: changed the link). It uses some amount of random sampling to avoid aliased results. The plot of <span> $y = sin(x^{2})$ </span> renders very accurately. Feel free to experiment with it and if there is a better method, you can comment below :).</p>
-
-<p><img class="center" src="/images/26052012/betterplot.png" width="600" height="400"></p>
-
-<p>I think I will get an non - ugly code ready by the tomorrow and wait for Stefan&rsquo;s branch to get merged before submitting this method as pull request. This week has been lots of experimentation. I think I will spend the next week getting a basic version of Interval Arithmetic ready using numpy.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/14/region-plots-with-interval-arithmetic/">Region Plots With Interval Arithmetic</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-14T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My GSoC project is to provide support for implicit plotting using interval arithmetic. As mpmath already has a very good interval arithmetic library, I wanted to try out how efficient the algorithm is going to be using the mpmath interval arithmetic library. I wanted to get an idea on the time required for plotting and also wanted to decide whether to write my own interval arithmetic library or use the existing mpmath library and add additional things to it.
-I have a basic implementation which supports only the mpmath interval arithmetic functions. The results look promising and I am guessing a separate implementation for plotting will be faster and I will be able to add features more easily.I have an image of <span> $y > 1/x$ </span> with the interval edges below. The image below was plotted so with a resolution of 1024x1024. It is possible to see how the intervals are subdivided more and more when it reaches the edge of a region.</p>
-
-<p><img class="center" src="/images/14052012/figwithedge.png" width="600" height="400"></p>
-
-<p>It took 1.57 seconds to render this image which is decently fast. I observed that if the independent regions are less and large, then the time take for the plot to be rendered is high. I tried <span> $cos(y) > sin(x)$ </span> which took about 5.3 seconds to render.</p>
-
-<p><img class="center" src="/images/14052012/cosysinx.png" width="600" height="400"></p>
-
-<p>I wanted to try what the maximum time it takes to render something. So I tried plotting <span> $sin^{2}x+cos^{2}x$ </span>less than 1. As the arithmetic is done on intervals, it is not possible for the algorithm to decide that the expression is not true throughout the interval. So it goes on subdividing more and more, until it reaches a dimension of 1 pixel. For a resolution of 512X512, it took 120 seconds to render. If there are a lot of evaluations in the expression, then it might increase, but we should be expecting times around 120 seconds.</p>
-
-<p>Another problem that I have to address is rasterization. I am really not getting any ideas on how to avoid rasterization. One way is to handle the zoom event in matplotlib and change the data to match the zoom. But for complicated graphs, revaluating might take a lot of time, which is bad.</p>
-
-<p><img class="center" src="/images/14052012/figraster.png" width="600" height="400"></p>
-
-<p>We can see that if there is a way of interpolating over the rectangular edges, then we will have a plot without rasterization. I haven&rsquo;t got any foolproof idea to implement this interpolation as there will be many independent regions. So if you have any idea, then please comment or mail me :). The code for plotting can be found <a href="https://gist.github.com/2695079">here</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/08/gsoc-2012-sympy/">GSoC 2012 Sympy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-08T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was selected by <a href="http://sympy.org">SymPy</a> to work on their plotting module as part of GSoC2012. So I will be spending the next three months working on a plotting module to plot implicit functions. Implicit functions are difficult to plot by simple meshing. Though we might get a good result with simple meshing for most of the functions, it can be quite erroneous for some of the functions. So I will be using interval arithmetic to provide a way to plot implicit functions. My GSoC application can be found <a href="https://github.com/sympy/sympy/wiki/GSoC-2012-Application-Bharath-M-R%3A-Plotting-Module">here</a>. I will be atlast making a lasting contribution to an open - source software.</p>
-
-<p>There are a lot of posts on how contributing to a open source software is the best way to sharpen your programming skills. But lot of people are too afraid to approach an organization and start contributing. There is an impending fear that people working on these projects are very stud(intelligent) people and they might get annoyed at your ignorance. Well, let me tell you this, people in an open source project are really nice. They don&rsquo;t get annoyed very easily and they are ready to help you with everything. They correct all your mistakes with lots of patience and help you with improving your code. I think getting your code reviewed is the best way to improve your programming skills after you have reached a certain stage.</p>
-
-<p>I was pretty much amazed with SymPy&rsquo;s code base. Its so neat and clean that any newcomer can just look at the docstrings and can deduce the functionality of every function. Though my experience is limited, I haven&rsquo;t seen a better codebase than SymPy&rsquo;s. I am still looking at their codebase and the amount of modularity continues to amaze me. So if anybody is interested in contributing to a python open source project, then consider contributing to <a href="http://sympy.org">SymPy</a>, for you will learn a lot on how a python project has to be structured.</p>
-
-<p>I will be using this blog to update about my GSoC project and hopefully I will learn a lot during this period.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/05/hello-world/">Hello World</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-05T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Hello World</h1>
+<p>So these are the things that I have to address</p>
 
 <ul>
-<li><p>Its been a long time procrastinating to write a blog. Having read this <a href="www.writerbabu.com/post.php?post_id=554">post</a>, I realized that I really need to think about the progress I am doing each day. I will be creating a new post every two days, in the worst case, with something that I have learnt or something that I know. Writing about something you know, really questions your assumptions, and you realize that you really didn&rsquo;t know something that well. Its also been a long time that I wrote essays, and I am feeling rusty. It is reflected in the way that I am writing this post. It is high time that I improve my writing skills also. Hopefully I will imprve over time</p></li>
+<li>Integration of svgfig with sympy live</li>
+<li>Fix the multiple spawning of windows in matplotlib issue.</li>
+<li>Fix the plot tests. As of now, the tests do nothing, as the process_series is not called if show is set to False.</li>
+<li>I have been toying around with ipython to get isympy notebook and qtconsole working. The problem I am facing is, there are 2 instances of qtconsole created, instead of one, when I run it. I will have to figure out the problem.</li>
+<li>Address the issues regarding the adaptive sampling of 2d plots.</li>
+<li>Clean up my branch of implicit plotting (This is almost done).</li>
+<li>Split the plot function into plot, plot3d, implicit_plot functions.</li>
 </ul>
 
 
-<p>I put a lot of effort to get this blog running. I feel really powerful as I can configure this blog as I want it to be and more than anything, it has <strong>MathJax</strong> support. I think this will help me to express my views better.</p>
+<p>I don&rsquo;t think I will be able to do all of these by the end of gsoc period. But my priority will be getting the implicit plotting and svgfig backend working and getting my pull requests merged.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/09/gsoc-week-7/">GSoC Week 7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-07-09T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This week has been quite eventful. The implicit plotting module is almost done. I added the functionality of combining expressions using the <code>And</code> and <code>Or</code> statements. Now you can do</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>plot_implicit(And(Eq(y, exp(x)), y - x &gt; 2)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and get a plot as below. So now you can combine any number of equations / inequalities and plot it. I think its possible to do a lot of cool stuff combining equations / inequalities.
+<img class="center" src="/images/09072012/fig1.png" width="600" height="400"></p>
+
+<p>Plotting through interval math is awesome but is also very limited. You cannot add support to <code>re()</code>, to functions that you cannot characterize as monotonic in certain regions. But we always encounter such functions. So there should be some fall back algorithm to plot such plots. I implemented the fall back algorithm last week. The idea is borrowed from sage implicit plots. We convert an equation / inequality into a function which returns 1 if it satisfies and -1 if it doesn&rsquo;t satisfy. So if you are plotting an equality then you plot using the <code>contour</code> command of matplotlib, and instruct it to plot only the zero contour. If its an inequality then plotting the region with two colors gives the plot required.</p>
+
+<p>These are examples from the fallback algorithm.</p>
+
+<p>Plot of $y^{2}=x^{3}-x$
+<img class="center" src="/images/09072012/fig2.png" width="600" height="400"></p>
+
+<p>The plot with interval arithmetic is more precise.
+<img class="center" src="/images/09072012/fig3.png" width="600" height="400"></p>
+
+<p>I haven&rsquo;t finished with the tests. Once I finish the tests I can send a pull request. The pull request will be pretty big, but most of the things have been reviewed in my previous pull request. This is just an extension of the previous pull request.</p>
+
+<p>There are certain problems with the module though. The line width problem which I mentioned in my previous blog post, cannot be fixed. So you will have to change to the fall back method if the line width becomes large. Also the fall back algorithm cannot plot boolean combinations of equations / inequalities. So the two methods complement each other largely. So the next question would be whether we can choose one of the two intelligently. I guess the answer is No. That decision must be taken by the user. But most of the times the interval math approach works very nicely.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/02/gsoc-week-6/">GSoC Week 6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-07-02T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been trying to improve the implicit plotting module during this week. But I have hit a road block. I almost ran out of ideas to solve the problem.</p>
+
+<p>Description:</p>
+
+<p>The implicit plotting algorithm I implemented works something like below:</p>
+
+<p>1) Get x and y interval. If it satisfies the expression throughout the interval, then plot it.</p>
+
+<p>2) If it does not satisfy, throw away the intervals.</p>
+
+<p>3) If it partially satisfies, then recursively subdivide into four intervals, and try again.</p>
+
+<p>For cases of equality, the first point never holds true due to floating point errors. So we go on
+eliminating regions, and after a certain depth, plot the remaining region. These are the regions where there is at least one solution. This is the reason why the plots are rasterized. But there is an inherent bigger problem here. In the cases of expressions like $x^{3}$ even if the x interval is small, the resulting interval after computation will be large. Sometimes, due to these large intervals, there might be lots of y and x intervals which satisfy because of these errors. Even if we make x interval really small, the corresponding y interval will be large, ie the line widths become large. The explanation is more of a guess rather than the right explanation.</p>
+
+<p>Examples:</p>
+
+<p>Plot of $x^{y}=y^{x}$
+<img class="center" src="/images/02072012/fig1.png" width="600" height="400">
+Even if I increase my depth of recursion to higher values, the thickness becomes less, but doesn&rsquo;t vanish. The plot actually should have been two separate curves.</p>
+
+<p><img class="center" src="/images/02072012/fig3.png" width="600" height="400"></p>
+
+<p>The Mac OSX&rsquo;s Grapher uses a similar algorithm(A guess because they have similar rasterization) but takes care of the line widths.</p>
+
+<p>If you feel you know where the problem is, please comment or email me. :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/24/gsoc-week-5/">Gsoc Week 5</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-06-24T00:00:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This week has been mostly bug fixing and working on migrating the sympy ipython profile to sympy. I also wanted to add the functionality of <code>ipython -c qtconsole</code>. So it has been mostly hanging in the ipython irc, asking them lots of questions on how ipython works. I am really thankful to minrk who patiently taught me how to do most of the stuff. There are a few problems that I am facing, but I think I will have the qtconsole ready in a day.</p>
+
+<p>I also submitted a pull request #1370 for my initial work on implicit plotting. Except for the bug of changing line thickness, it works pretty nicely. Please feel free to play with it and comment on the pull request if you encounter any bugs.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/09/gsoc-week-3/">GSoC Week 3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-06-09T00:00:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have almost finished with the basic framework of implicit plotting based on interval arithmetic. The module implements both continuity tracking and domain tracking. Hence it does not plot points which are not there in the domain of the function. The functionalities are best illustrated by plots. There are also a couple of limitations that I encountered, which I think is difficult to avoid. I will illustrate both the functionality and the problems through plots.</p>
+
+<p><img class="center" src="/images/09062012/img1.png" width="600" height="400">
+The above image illustrates a plot which does domain tracking and continuity tracking. It is not possible for interval arithmetic without tracking, to decide whether to draw the plots near zero. But with continuity tracking we get an accurate plot.</p>
+
+<p><img class="center" src="/images/09062012/img2.png" width="600" height="400">
+The above plot is that of $y = \frac{1}{\tan{\left (x \right )}}$ . It is possible to see the small discontinuity near multiples of $\pi / 2$ as $\pi / 2$ is not there in the domain of the expression.</p>
+
+<p><img class="center" src="/images/09062012/img3.png" width="600" height="400">
+The above plot illustrates how sqrt does not plot anything outside its domain. Even though it appears not that significant, it becomes significant when the huge expression is provided as the argument to the function.</p>
+
+<p><strong>Illustrations of more plots</strong></p>
+
+<p>Plot of $y^{2}=x^{3}-x$
+<img class="center" src="/images/09062012/img4.png" width="600" height="400"></p>
+
+<p><img class="center" src="/images/09062012/img5.png" width="600" height="400">
+The above plot took 19.26 seconds to render.</p>
+
+<h2>Problems</h2>
+
+<p>The problem with plots using interval arithmetic is that the errors increases with the length of the expression as the it takes the lowest and the uppermost bounds. It is possible to see the effect of errors in the following plot. It is possible to see the line thickens when the expression reaches a maximum or an minimum. This is due to the error creeping in. The interval becomes wide even at the smallest of the x interval.</p>
+
+<p><img class="center" src="/images/09062012/img6.png" width="600" height="400"></p>
+
+<p>It is better illustrated in the plot below. It is possible to see the width of the line increasing and then decreasing.
+<img class="center" src="/images/09062012/img7.png" width="600" height="400"></p>
+
+<p>Then next problem is that of rasterization. In order to avoid rasterization I tried using the Matplotlib&rsquo;s <code>contourf</code> function which implements the marching squares algorithm. Though it smoothens the curves, still there is fair bit of rasterization. The plot below is a zoomed version of $y=sin(x)$
+<img class="center" src="/images/09062012/img8.png" width="600" height="400"></p>
+
+<p>Presently the plotting function supports plotting of expressions containing <code>cos</code>, <code>sin</code>, <code>tan</code>, <code>exp</code>, <code>log</code>, <code>sqrt</code>, <code>atan</code>. Implementing more functions is fairly easy. I should be able to finish most of the expressions that can be implemented in the next week. I will look into implementing plotting implicit equations for expressions which cannot be implemented using interval arithmetic.</p>
 </div>
   
   
@@ -343,6 +329,8 @@ I have a basic implementation which supports only the mpmath interval arithmetic
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
