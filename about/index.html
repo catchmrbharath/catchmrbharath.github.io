@@ -5,18 +5,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>GSoC Week 7 - Bharath Mankalale</title>
+  <title>About Me - Bharath Mankalale</title>
   <meta name="author" content="Bharath Mankalale">
   
-  <meta name="description" content="">
-  <meta name="keywords" content="Bharath, Mankalale, Python, programming, SymPy, Ruby, Ruby on Rails, Scientifc Computing, Scipy, NumPy, Matplotlib">
+  <meta name="description" content="Introduction of Bharath Mankalalale, Bharath M R, catchmrbharath">
+  <meta name="keywords" content="internships, about, python, scipy, sympy, scientific computing">
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7">
+  <link rel="canonical" href="http://www.catchmrbharath.github.io/about">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Bharath Mankalale" type="application/atom+xml">
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">GSoC Week 7</h1>
+      <h1 class="entry-title">About Me</h1>
     
     
       <p class="meta">
@@ -90,35 +90,17 @@
 
 
 
-<time class='entry-date' datetime='2012-07-09T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>This week has been quite eventful. The implicit plotting module is almost done. I added the functionality of combining expressions using the <code>And</code> and <code>Or</code> statements. Now you can do</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>plot_implicit(And(Eq(y, exp(x)), y - x &gt; 2)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and get a plot as below. So now you can combine any number of equations / inequalities and plot it. I think its possible to do a lot of cool stuff combining equations / inequalities.
-<img class="center" src="/images/09072012/fig1.png" width="600" height="400"></p>
-
-<p>Plotting through interval math is awesome but is also very limited. You cannot add support to <code>re()</code>, to functions that you cannot characterize as monotonic in certain regions. But we always encounter such functions. So there should be some fall back algorithm to plot such plots. I implemented the fall back algorithm last week. The idea is borrowed from sage implicit plots. We convert an equation / inequality into a function which returns 1 if it satisfies and -1 if it doesn&rsquo;t satisfy. So if you are plotting an equality then you plot using the <code>contour</code> command of matplotlib, and instruct it to plot only the zero contour. If its an inequality then plotting the region with two colors gives the plot required.</p>
-
-<p>These are examples from the fallback algorithm.</p>
-
-<p>Plot of $y^{2}=x^{3}-x$
-<img class="center" src="/images/09072012/fig2.png" width="600" height="400"></p>
-
-<p>The plot with interval arithmetic is more precise.
-<img class="center" src="/images/09072012/fig3.png" width="600" height="400"></p>
-
-<p>I haven&rsquo;t finished with the tests. Once I finish the tests I can send a pull request. The pull request will be pretty big, but most of the things have been reviewed in my previous pull request. This is just an extension of the previous pull request.</p>
-
-<p>There are certain problems with the module though. The line width problem which I mentioned in my previous blog post, cannot be fixed. So you will have to change to the fall back method if the line width becomes large. Also the fall back algorithm cannot plot boolean combinations of equations / inequalities. So the two methods complement each other largely. So the next question would be whether we can choose one of the two intelligently. I guess the answer is No. That decision must be taken by the user. But most of the times the interval math approach works very nicely.</p>
+<div class="entry-content"><p>  I am a Masters student in Computer Science at University of California, San Diego. I am mostly a self taught programmer, doing my first few computer science
+  courses now.I love to work on cool things at the intersection of Applied Math and Computer Science. I love the fact that Math and Computer Science, when applied to a particular field, can revolutionize the field of study.
+  My present interest are in machine learning and scientific computing. I am discovering a lot of topics in computer science right now, and I have a developed an interest in
+  distributed systems and theory of programming languages.</p>
 </div>
 
 
@@ -134,12 +116,12 @@
 
 
 
-<time class='entry-date' datetime='2012-07-09T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/gsoc/'>gsoc</a>
+    <a class='category' href='/blog/categories/about/'>About</a>
   
 </span>
 
@@ -148,7 +130,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7/" data-via="catchmrbharath" data-counturl="http://www.catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.catchmrbharath.github.io/about/index.html" data-via="catchmrbharath" data-counturl="http://www.catchmrbharath.github.io/about/index.html" >Tweet</a>
   
   
   
@@ -157,20 +139,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/07/02/gsoc-week-6/" title="Previous Post: GSoC Week 6">&laquo; GSoC Week 6</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/07/23/gsoc-week-9/" title="Next Post: Gsoc week 9">Gsoc week 9 &raquo;</a>
       
     </p>
   </footer>
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -268,10 +240,7 @@
       var disqus_shortname = 'genblog';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7/';
-        var disqus_url = 'http://www.catchmrbharath.github.io/blog/2012/07/09/gsoc-week-7/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
