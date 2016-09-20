@@ -10,3 +10,5 @@ categories: [About]
   My present interest are in machine learning and scientific computing. I am discovering a lot of topics in computer science right now, and I have a developed an interest in
   distributed systems and theory of programming languages. 
 
+  You can contact me at me@bharathmr.com
+
